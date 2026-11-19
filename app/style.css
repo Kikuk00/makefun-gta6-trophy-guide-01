@@ -1,0 +1,88 @@
+:root {
+  --paper: #f7f2e9; --card: #fffdf7; --ink: #241d16; --muted: #6f6252;
+  --line: #e2d7c2; --accent: #c8502e; --accent-soft: #fbe9df;
+  --gold: #b98a1d; --silver: #7d8894; --bronze: #a06a3f; --plat: #4f7fa8;
+  --good: #2e7d4f; --danger: #b3261e; --radius: 12px;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--paper); color: var(--ink);
+  font-family: "Iowan Old Style", Palatino, Georgia, serif; font-size: 16px; line-height: 1.45; }
+h1, h2, h3, .bigCount { font-family: Georgia, "Times New Roman", serif; }
+.top { display: flex; flex-wrap: wrap; gap: 24px; justify-content: space-between;
+  padding: 28px 28px 16px; border-bottom: 3px solid var(--accent); }
+.top h1 { margin: 0; font-size: 42px; letter-spacing: .5px; color: var(--accent); }
+.sub { margin: 4px 0; font-size: 18px; }
+.counts { margin: 0; color: var(--muted); font-size: 14px; }
+.progressBox { min-width: 300px; background: var(--card); border: 1px solid var(--line);
+  border-radius: var(--radius); padding: 14px 18px; }
+.bigCount { font-size: 34px; font-weight: bold; }
+.bigCount .of { font-size: 17px; color: var(--muted); font-weight: normal; }
+.bar { height: 12px; background: #eadfc9; border-radius: 6px; margin: 8px 0; overflow: hidden; }
+.bar .fill { height: 100%; background: var(--accent); border-radius: 6px; transition: width .2s; }
+.gradeLine, .nextUp { font-size: 13px; color: var(--muted); }
+.nextUp { color: var(--ink); margin-top: 4px; }
+.tabs { display: flex; gap: 6px; padding: 12px 28px 0; flex-wrap: wrap; }
+.tabs button { border: 1px solid var(--line); background: var(--card); color: var(--ink);
+  padding: 9px 16px; border-radius: 8px 8px 0 0; font-size: 15px; cursor: pointer; font-family: inherit; }
+.tabs button.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+.view { padding: 16px 28px 28px; }
+.toolbar { display: flex; gap: 12px; flex-wrap: wrap; align-items: center;
+  background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 10px 14px; }
+.toolbar label { font-size: 14px; display: flex; gap: 6px; align-items: center; }
+.toolbar select, .toolbar input[type="search"] { font: inherit; font-size: 14px; padding: 6px 8px;
+  border: 1px solid var(--line); border-radius: 6px; background: #fff; }
+.toolbar .search input { width: 200px; }
+.toolbar .spacer { flex: 1; }
+.toolbar button, .importBtn { border: 1px solid var(--accent); background: #fff; color: var(--accent);
+  padding: 7px 12px; border-radius: 8px; font: inherit; font-size: 14px; cursor: pointer; }
+.toolbar button:hover, .importBtn:hover { background: var(--accent-soft); }
+.importBtn input { display: none; }
+.showing { color: var(--muted); font-size: 14px; margin: 10px 2px; }
+.layout { display: grid; grid-template-columns: minmax(0, 7fr) minmax(320px, 5fr); gap: 20px; align-items: start; }
+.trophyList { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.trophyCard { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 12px 14px; cursor: pointer; }
+.trophyCard:hover { border-color: var(--accent); }
+.trophyCard.selected { border: 2px solid var(--accent); padding: 11px 13px; }
+.trophyCard.earned { background: #f0f6ee; }
+.cardTop { display: flex; gap: 10px; align-items: flex-start; }
+.cardTop input[type="checkbox"] { width: 20px; height: 20px; margin-top: 2px; accent-color: var(--good); flex: none; }
+.cardTitle { font-weight: bold; font-size: 17px; }
+.cardDesc { color: var(--muted); font-size: 14px; margin-top: 2px; }
+.badges { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px; }
+.badge { font-size: 12px; padding: 2px 8px; border-radius: 20px; border: 1px solid var(--line); color: var(--muted); background: #fff; }
+.badge.platinum { background: #dfeaf2; color: var(--plat); border-color: #b9d0e2; font-weight: bold; }
+.badge.gold { background: #f6e8bd; color: var(--gold); border-color: #e3cd8a; font-weight: bold; }
+.badge.silver { background: #e8ebee; color: var(--silver); border-color: #c8ced6; font-weight: bold; }
+.badge.bronze { background: #f3e2d2; color: var(--bronze); border-color: #ddc0a4; font-weight: bold; }
+.badge.missable { background: #fbe3e1; color: var(--danger); border-color: #f0b6b2; font-weight: bold; }
+.badge.hiddenB { background: #ece6f4; color: #5b4a8a; border-color: #d3c8ea; }
+.badge.earnedB { background: #dcefe2; color: var(--good); border-color: #b3d9c0; font-weight: bold; }
+.counter { margin-top: 8px; font-size: 14px; display: flex; gap: 8px; align-items: center; }
+.counter button { width: 28px; height: 28px; border-radius: 6px; border: 1px solid var(--line);
+  background: #fff; font-size: 16px; cursor: pointer; }
+.detail { position: sticky; top: 12px; background: var(--card); border: 1px solid var(--line);
+  border-radius: var(--radius); padding: 18px 20px; }
+.detail h2 { margin: 0 0 4px; font-size: 24px; }
+.detail .official { color: var(--muted); font-style: italic; margin: 0 0 10px; }
+.detail h3 { margin: 16px 0 6px; font-size: 16px; color: var(--accent); }
+.detail p { margin: 6px 0; }
+.detail ol { margin: 6px 0; padding-left: 22px; }
+.detail ol li { margin: 3px 0; }
+.detail .sources { font-size: 13px; color: var(--muted); }
+.detail .sources li { margin: 3px 0; }
+.detail .srcUrl { word-break: break-all; }
+.detail .empty { color: var(--muted); }
+.roadmap { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
+.roadmap > li { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 16px 20px; }
+.roadmap h3 { margin: 0 0 4px; color: var(--accent); }
+.roadmap .stageTrophies { font-size: 14px; color: var(--muted); margin-top: 8px; }
+.roadmap .stageCount { font-weight: bold; color: var(--ink); }
+.intro { max-width: 760px; }
+footer { padding: 8px 28px 28px; color: var(--muted); font-size: 13px; }
+@media (max-width: 900px) {
+  .layout { grid-template-columns: 1fr; }
+  .detail { position: static; }
+  .top h1 { font-size: 32px; }
+  .view, .tabs { padding-left: 14px; padding-right: 14px; }
+}
